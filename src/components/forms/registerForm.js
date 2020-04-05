@@ -10,11 +10,11 @@ class RegisterForm extends React.Component {
         super(props);
         this.state = {
             name: '',
-            username: '',
+            userName: '',
             email: '',
             phoneNumber: '',
             password: '',
-            role: ''
+            roleid: ''
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,19 +27,19 @@ class RegisterForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const {name, username, email, phoneNumber, password, role} = this.state;
+        const {name, userName, email, phoneNumber, password, roleid} = this.state;
 
         let data = {
             name,
-            username,
+            userName,
             email,
             phoneNumber,
             password,
-            role
+            roleid
         };
         let json = JSON.stringify(data);
 
-        api.post("/register", json)
+        api.put("/User", json)
             .then(response => {
                 if (response.status === 200) {
                     this.props.close();
@@ -57,46 +57,50 @@ class RegisterForm extends React.Component {
                 <div className={"col-sm-5"} style={{"marginLeft": "1rem"}}>
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Group>
-                            <Form.Label>Имя</Form.Label>
-                            <Form.Control type={"text"} placeholder={"имя"} name={"name"}
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control type={"text"} placeholder={"name"} name={"name"}
                                           value={this.state.name} onChange={this.handleChange} required={true}
                                           disabled={this.state.disabled}
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>email</Form.Label>
+                            <Form.Label>Email</Form.Label>
                             <Form.Control type={"email"} name={"email"} placeholder={"email"}
                                           value={this.state.email} disabled={this.state.disabled}
                                           onChange={this.handleChange} required={true}
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>username</Form.Label>
-                            <Form.Control type={"text"} name={"username"} placeholder={"username"}
-                                          value={this.state.username} disabled={this.state.disabled}
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control type={"text"} name={"userName"} placeholder={"userName"}
+                                          value={this.state.userName} disabled={this.state.disabled}
                                           onChange={this.handleChange} required={true}
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>phone number</Form.Label>
+                            <Form.Label>Phone number</Form.Label>
                             <Form.Control type={"text"} name={"phoneNumber"} placeholder={"phoneNumber"}
                                           value={this.state.phoneNumber} disabled={this.state.disabled}
                                           onChange={this.handleChange} required={true}
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>password</Form.Label>
+                            <Form.Label>Password</Form.Label>
                             <Form.Control type={"password"} name={"password"} placeholder={"password"}
                                           value={this.state.password} disabled={this.state.disabled}
                                           onChange={this.handleChange} required={true}
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Роль</Form.Label>
-                            <Form.Control type={"text"} name={"role"} placeholder={"role"}
-                                          value={this.state.role} disabled={this.state.disabled}
+                            <Form.Label>I am</Form.Label>
+                            <Form.Control as={"select"} name={"roleid"} placeholder={"role"}
+                                          value={this.state.roleid} disabled={this.state.disabled}
                                           onChange={this.handleChange} required={true}
-                            />
+                            >
+                                <option value={1}>Service Provider</option>
+                                <option value={2}>Client</option>
+                                <option value={3}>Volunteer</option>
+                            </Form.Control>
                         </Form.Group>
                         <Form.Group>
                             <Button variant="primary" type={"submit"}>

@@ -3,7 +3,7 @@ import axios from 'axios';
 const http = require("http");
 
 const api = axios.create({
-    baseURL: "http://localhost:8090",
+    baseURL: "//survivalkitnet.goldaim.ru",
     responseType: "json",
     headers: {
         "Authorization": localStorage.getItem("userToken"),

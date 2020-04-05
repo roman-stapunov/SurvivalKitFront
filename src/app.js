@@ -5,6 +5,7 @@ import Header from "./components/header";
 import RegisterForm from "./components/forms/registerForm";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import Home from "./components/home";
+import ProfileScreen from "./components/profile";
 
 
 const React = require('react');
@@ -17,8 +18,9 @@ class App extends React.Component {
                 <BrowserRouter forceRefresh={false}>
                     <Header/>
                     <Route path="/home" component={Home}/>
-                    <AuthenticatedRoute path="/profile" component={Home}/>
-                    <AuthenticatedRoute path="/organizations" component={Home}/>
+                    <Route path="/profile" component={ProfileScreen}/>
+                    <Route path="/organizations" component={Home}/>
+                    <Route path="/my-orders" component={Home}/>
                     <AuthenticatedRoute path="/my-orders" component={Home}/>
                     <Route path="/register" component={RegisterForm}/>
                 </BrowserRouter>

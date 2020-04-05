@@ -15,13 +15,13 @@ class AuthService {
             password
         };
         let json = JSON.stringify(data);
-        return api.post("/auth", json);
+        return api.get("/User/" + username);
     }
 
     registerSuccessfulLoginForJwt(userName, data) {
         localStorage.setItem(USER_NAME_SESSION_ATTRIBUTE_NAME, userName);
-        localStorage.setItem(USER_ROLE, data.userRole);
-        localStorage.setItem(USER_ID, data.userId);
+        localStorage.setItem(USER_ROLE, data.roleId);
+        localStorage.setItem(USER_ID, data.id);
         this.setupAxiosInterceptors(this.createJWTToken(data.token))
     }
 

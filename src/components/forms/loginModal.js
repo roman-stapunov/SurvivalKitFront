@@ -91,10 +91,10 @@ class LoginModal extends React.Component {
                         <Modal.Header style={{display: "block"}}>
                             <Nav defaultActiveKey={"login"} variant="pills" className={"flex-row"} justify={true}>
                                 <Nav.Item>
-                                    <Nav.Link eventKey={"login"}> Вход </Nav.Link>
+                                    <Nav.Link eventKey={"login"}> Login </Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
-                                    <Nav.Link eventKey={"register"}> Регистрация </Nav.Link>
+                                    <Nav.Link eventKey={"register"}> Registration </Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
                                     <Button type="button" variant={"link"} className="close" onClick={this.handleClose}>
